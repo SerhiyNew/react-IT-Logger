@@ -26,21 +26,21 @@
     {
       "id": 1,
       "firstName": "John",
-      "secName": "Doe"
+      "lastName": "Doe"
     },
     {
       "id": 2,
       "firstName": "Sam",
-      "secName": "Smith"
+      "lastName": "Smith"
     },
     {
       "id": 3,
       "firstName": "Sara",
-      "secName": "Wilson"
+      "lastName": "Wilson"
     },
     {
       "firstName": "Serhii",
-      "secName": "M",
+      "lastName": "M",
       "id": 4
     }
   ]

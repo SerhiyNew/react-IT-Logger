@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddLogModal = () => {
+const EditLogModal = () => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
@@ -11,7 +11,6 @@ const AddLogModal = () => {
     if (message === '' || tech === '') {
       M.toast({ html: 'Please enter all fields' });
     } else {
-      //
       console.log(message, tech, attention);
 
       // clear Fields
@@ -23,7 +22,7 @@ const AddLogModal = () => {
 
   //  id of returned div MUST be equal to href of clicked btn !!!
   return (
-    <div className='modal' id='add-log-modal' style={modalStyle}>
+    <div className='modal' id='edit-log-modal' style={modalStyle}>
       <div className='modal-content'>
         <h4>Enter system Log</h4>
         <div className='row'>
@@ -35,7 +34,7 @@ const AddLogModal = () => {
               onChange={e => setMessage(e.target.value)}
             />
             <label htmlFor='message' className='active'>
-              Log Message
+              EDIT Message
             </label>
           </div>
         </div>
@@ -91,4 +90,4 @@ const modalStyle = {
   width: '75%',
   height: '75%',
 };
-export default AddLogModal;
+export default EditLogModal;
