@@ -1,0 +1,47 @@
+{
+  "logs": [
+    {
+      "id": 1,
+      "message": "first message",
+      "attention": false,
+      "date": "03-02-2019",
+      "tech": "Sam Smith"
+    },
+    {
+      "id": 2,
+      "message": "sec message",
+      "attention": true,
+      "date": "02-02-2022",
+      "tech": "Sara Wilson"
+    },
+    {
+      "id": 3,
+      "message": "some another message",
+      "attention": false,
+      "date": "03-03-2033",
+      "tech": "John Doe"
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "secName": "Doe"
+    },
+    {
+      "id": 2,
+      "firstName": "Sam",
+      "secName": "Smith"
+    },
+    {
+      "id": 3,
+      "firstName": "Sara",
+      "secName": "Wilson"
+    },
+    {
+      "firstName": "Serhii",
+      "secName": "M",
+      "id": 4
+    }
+  ]
+}
