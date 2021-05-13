@@ -1,4 +1,10 @@
-import { GET_LOGS, SET_LOADING, LOGS_ERROR } from './types';
+import {
+  GET_LOGS,
+  SET_LOADING,
+  LOGS_ERROR,
+  ADD_LOG,
+  DELETE_LOG,
+} from './types';
 
 // Get logs from server  one variant
 
@@ -20,7 +26,7 @@ import { GET_LOGS, SET_LOADING, LOGS_ERROR } from './types';
 
 export const getLogs = () => async dispatch => {
   try {
-    // setLoading();
+    setLoading();
 
     const res = await fetch('./logs');
     const data = await res.json();
@@ -37,7 +43,56 @@ export const getLogs = () => async dispatch => {
   }
 };
 
-export const getLoading = () => {
+// Add new log
+
+export const addLog = log => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch('./logs', {
+      method: 'POST',
+      body: JSON.stringify(log),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await res.json();
+
+    dispatch({
+      type: ADD_LOG,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.res.data,
+    });
+  }
+};
+
+// Delete log from server
+
+export const deleteLog = id => async dispatch => {
+  try {
+    setLoading();
+
+    await fetch(`./logs/${id}`, {
+      method: 'DELETE',
+    });
+
+    dispatch({
+      type: DELETE_LOG,
+      payload: id,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: error.res.data,
+    });
+  }
+};
+
+export const setLoading = () => {
   // set loading to true
   return {
     type: SET_LOADING,

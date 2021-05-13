@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addLog } from '../../actions/logAction';
 
-const AddLogModal = () => {
+const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
@@ -11,8 +14,20 @@ const AddLogModal = () => {
     if (message === '' || tech === '') {
       M.toast({ html: 'Please enter all fields' });
     } else {
-      //
-      console.log(message, tech, attention);
+      // create new log obj
+
+      const newLog = {
+        message,
+        attention,
+        tech,
+        date: new Date(),
+      };
+
+      // call redux function, what we getting becouse of props
+      addLog(newLog);
+
+      // some Message
+      M.toast({ html: `New Log is added to the list by ${tech}` });
 
       // clear Fields
       setMessage('');
@@ -87,8 +102,16 @@ const AddLogModal = () => {
   );
 };
 
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired,
+};
+
 const modalStyle = {
   width: '75%',
   height: '75%',
 };
-export default AddLogModal;
+
+//
+// null - becouse we no need to take some thing from state,
+// but we need to use some function from state (addLog), thats why we take it by second parametr
+export default connect(null, { addLog })(AddLogModal);
