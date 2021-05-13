@@ -4,9 +4,9 @@ import Moment from 'react-moment';
 import M from 'materialize-css/dist/js/materialize.min.js';
 //
 import { connect } from 'react-redux';
-import { deleteLog } from '../../actions/logAction';
+import { deleteLog, setCurrent } from '../../actions/logAction';
 
-const LogItem = ({ log, deleteLog }) => {
+const LogItem = ({ log, deleteLog, setCurrent }) => {
   const onDelete = () => {
     deleteLog(log.id);
 
@@ -20,6 +20,7 @@ const LogItem = ({ log, deleteLog }) => {
         <a
           className={`modal-trigger ${log.attention ? 'red' : 'blue'}-text`}
           href='#edit-log-modal'
+          onClick={() => setCurrent(log)}
         >
           {log.message}
         </a>
@@ -40,9 +41,10 @@ const LogItem = ({ log, deleteLog }) => {
 LogItem.prototype = {
   log: PropTypes.object.isRequired,
   deleteLog: PropTypes.func.isRequired,
+  setCurrent: PropTypes.func.isRequired,
 };
 
 //
 // null - becouse we no need to take some thing from state,
 // but we need to use some function from state (deleteLog), thats why we take it by second parametr
-export default connect(null, { deleteLog })(LogItem);
+export default connect(null, { deleteLog, setCurrent })(LogItem);
