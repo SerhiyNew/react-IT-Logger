@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateLog } from '../../actions/logAction';
 //
+import TechSelectOption from '../../components/techs/TechSelectOption';
+//
+
 const EditLogModal = ({ current, updateLog }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
@@ -72,9 +75,7 @@ const EditLogModal = ({ current, updateLog }) => {
                 {' '}
                 Select Tech{' '}
               </option>
-              <option value='John Doe'>John Doe</option>
-              <option value='Sam Smith'>Sam Smith</option>
-              <option value='Sara'>Sara</option>
+              <TechSelectOption></TechSelectOption>
             </select>
           </div>
         </div>
