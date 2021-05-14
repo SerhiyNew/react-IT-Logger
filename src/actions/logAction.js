@@ -11,7 +11,6 @@ import {
 } from './types';
 
 // Get logs from server  one variant
-
 // export const getLogs = () => {
 //   return dispatch => {
 //     setLoading();
@@ -27,7 +26,6 @@ import {
 // };
 
 // Get logs from server  another variant
-
 export const getLogs = () => async dispatch => {
   try {
     setLoading();
@@ -42,13 +40,12 @@ export const getLogs = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.res.data,
+      payload: error.response.statusText,
     });
   }
 };
 
 // Add new log
-
 export const addLog = log => async dispatch => {
   try {
     setLoading();
@@ -69,13 +66,12 @@ export const addLog = log => async dispatch => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.res.data,
+      payload: error.response.statusText,
     });
   }
 };
 
 // Delete log from server
-
 export const deleteLog = id => async dispatch => {
   try {
     setLoading();
@@ -91,13 +87,12 @@ export const deleteLog = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.res.data,
+      payload: error.response.statusText,
     });
   }
 };
 
 // Update log on server
-
 export const updateLog = log => async dispatch => {
   try {
     setLoading();
@@ -119,13 +114,12 @@ export const updateLog = log => async dispatch => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.res.data,
+      payload: error.response.statusText,
     });
   }
 };
 
 // Search logs
-
 export const searchLogs = text => async dispatch => {
   try {
     setLoading();
@@ -140,13 +134,12 @@ export const searchLogs = text => async dispatch => {
   } catch (error) {
     dispatch({
       type: LOGS_ERROR,
-      payload: error.res.data,
+      payload: error.response.statusText,
     });
   }
 };
 
 // Set current log into form
-
 export const setCurrent = log => {
   return {
     type: SET_CURRENT,
@@ -155,15 +148,14 @@ export const setCurrent = log => {
 };
 
 // Clear current log in form
-
 export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT,
   };
 };
 
+// Set loading to true
 export const setLoading = () => {
-  // set loading to true
   return {
     type: SET_LOADING,
   };
